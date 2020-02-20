@@ -112,3 +112,54 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+let articleComponent = (title, artDate, first, second, third) => {
+  let articleDiv = document.createElement('div');
+  articleDiv.classList.add('article');
+
+  let titleH2 = document.createElement('h2');
+  titleH2.textContent = title;
+  articleDiv.appendChild(titleH2);
+
+  let datePar = document.createElement('p');
+  datePar.classList.add('date');
+  datePar.textContent = artDate;
+  articleDiv.appendChild(datePar);
+
+  let parNo1 = document.createElement('p');
+  parNo1.textContent = first;
+  articleDiv.appendChild(parNo1);
+
+  let parNo2 = document.createElement('p');
+  parNo2.textContent = second;
+  articleDiv.appendChild(parNo2);
+
+  let parNo3 = document.createElement('p');
+  parNo3.textContent = third;
+  articleDiv.appendChild(parNo3);
+
+  let expandSpan = document.createElement('span');
+  expandSpan.classList.add('expandButton');
+  expandSpan.addEventListener('click', (expand) => {
+    articleDiv.classList.toggle('article-open');
+  })
+  articleDiv.appendChild(expand);
+
+  return articleDiv;
+}
+
+let articlesDiv = document.querySelector('div.articles');
+
+data.forEach((currentItem) => {
+  const newArticle = articleComponent(currentItem.title, currentItem.date, currentItem.firstParagraph, currentItem.secondParagraph, currentItem.thirdParagraph);
+  articlesDiv.appendChild(newArticle);
+})
+
+let anotherArticle = {
+  title: 'Random Dino Lorem',
+  date: 'Feb 32nd 2654',
+  firstParagraph: 'Buitreraptor. Sinraptor. Poekilopleuron. Rinconsaurus. Silesaurus. Tatisaurus. Bolong. Aniksosaurus. Cumnoria. Antarctopelta. Kentrosaurus. Augustia. Fulgurotherium. Yaleosaurus. Shuvuuia. Gigantspinosaurus. Ugrosaurus. Microsaurops. Qinlingosaurus. Pleurocoelus. Shenzhouraptor. Jixiangornis. Albertaceratops. Neuquenraptor.',
+  secondParagraph: 'Hypselorhachis. Omeisaurus. Bugenasaura. Palaeoscincus. Ornithomimoides. Embasaurus. Procheneosaurus. Syngonosaurus. Montanoceratops. Azendohsaurus. Amphicoelias. Sinocalliopteryx. Paleosaurus.',
+  thirdParagraph: ' Shuosaurus. Zhongyuansaurus. Zapsalis. Ajkaceratops. Alaskacephale. Triceratops. Juravenator. Ornithomimus. Chondrosteosaurus. Deuterosaurus. Suchosaurus. Technosaurus. Danubiosaurus. Protognathosaurus. Gojirasaurus. Tatankaceratops. Animantarx. Nebulasaurus. Aegyptosaurus. Falcarius. Seismosaurus. Struthiomimus. Palaeoctonus. Bugenasaura. Labrosaurus. Deltadromeus. Fukuititan. Jiangshanosaurus. Leaellynasaura. Chienkosaurus.'
+}
+
+data.push(anotherArticle);
