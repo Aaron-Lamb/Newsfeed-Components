@@ -138,7 +138,7 @@ let articleComponent = (artTitle, artDate, first, second, third) => {
   let expandSpan = document.createElement('span');
   expandSpan.classList.add('expandButton');
   expandSpan.addEventListener('click', () => {
-  expandSpan.classList.toggle('article-open');
+  articleDiv.classList.toggle('article-open');
   });
 
   articleDiv.appendChild(titleH2);
@@ -148,8 +148,10 @@ let articleComponent = (artTitle, artDate, first, second, third) => {
   articleDiv.appendChild(parNo3);
   articleDiv.appendChild(expandSpan);
 
-  return articleComponent;
+  return articleDiv;
 };
+
+let articlesDiv = document.querySelector('.articles');
 
 data.forEach(currentItem => {
   let newArticle = articleComponent(
@@ -159,6 +161,8 @@ data.forEach(currentItem => {
     currentItem.secondParagraph,
     currentItem.thirdParagraph
     );
+
+    articlesDiv.appendChild(newArticle);
 })
 
 let anotherArticle = {
@@ -170,3 +174,4 @@ let anotherArticle = {
 }
 
 data.push(anotherArticle);
+articlesDiv.appendChild(anotherArticle);
