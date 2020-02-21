@@ -140,7 +140,7 @@ let articleComponent = (artTitle, artDate, first, second, third) => {
   expandSpan.addEventListener('click', () => {
   articleDiv.classList.toggle('article-open');
   });
-
+  expandSpan.textContent = '\u25bc';
   articleDiv.appendChild(titleH2);
   articleDiv.appendChild(datePar);
   articleDiv.appendChild(parNo1);
@@ -165,13 +165,12 @@ data.forEach(currentItem => {
     articlesDiv.appendChild(newArticle);
 })
 
-let anotherArticle = {
+data.push({
   title: 'Random Dino Lorem',
   date: 'Feb 32nd 2654',
   firstParagraph: 'Buitreraptor. Sinraptor. Poekilopleuron. Rinconsaurus. Silesaurus. Tatisaurus. Bolong. Aniksosaurus. Cumnoria. Antarctopelta. Kentrosaurus. Augustia. Fulgurotherium. Yaleosaurus. Shuvuuia. Gigantspinosaurus. Ugrosaurus. Microsaurops. Qinlingosaurus. Pleurocoelus. Shenzhouraptor. Jixiangornis. Albertaceratops. Neuquenraptor.',
   secondParagraph: 'Hypselorhachis. Omeisaurus. Bugenasaura. Palaeoscincus. Ornithomimoides. Embasaurus. Procheneosaurus. Syngonosaurus. Montanoceratops. Azendohsaurus. Amphicoelias. Sinocalliopteryx. Paleosaurus.',
   thirdParagraph: 'Shuosaurus. Zhongyuansaurus. Zapsalis. Ajkaceratops. Alaskacephale. Triceratops. Juravenator. Ornithomimus. Chondrosteosaurus. Deuterosaurus. Suchosaurus. Technosaurus. Danubiosaurus. Protognathosaurus. Gojirasaurus. Tatankaceratops. Animantarx. Nebulasaurus. Aegyptosaurus. Falcarius. Seismosaurus. Struthiomimus. Palaeoctonus. Bugenasaura. Labrosaurus. Deltadromeus. Fukuititan. Jiangshanosaurus. Leaellynasaura. Chienkosaurus.'
-}
+});
 
-data.push(anotherArticle);
-articlesDiv.appendChild(anotherArticle);
+
