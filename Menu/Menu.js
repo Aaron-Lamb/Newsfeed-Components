@@ -23,11 +23,21 @@ let menuItems = [
  
  const menuComponentCreator = (arr) => {
    // <div class="menu">
-    
+    let menuDiv = document.createElement('div');
+    menuDiv.classList.add('menu');
 
    //   <ul>
+  let menuList = document.createElement('ul');
+  menuDiv.appendChild(menuList);
+
    //     {each menu item as a list item}
+  arr.forEach((element) => {
+    const menuItem = document.createElement('li');
+    menuItem.textContent = element;
+    menuDiv.appendChild(menuItem);
+  });
+
    //   </ul>
    // </div>
-   
+   return menuDiv;
 }
