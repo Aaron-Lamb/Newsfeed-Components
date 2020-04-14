@@ -107,7 +107,7 @@ Step 5: Add a new article to the array. Make sure it is in the same format as th
 const articleComponentCreator = (titleInfo, dateInfo, first, second, third) => {
 // <div class="article">
 let articleContainer = document.createElement('div');
-articleContainer.classList.add('article', 'article-open');
+articleContainer.classList.add('article');
 
 //   <h2>{title of the article}</h2>
 let titleH2 = document.createElement('h2');
@@ -139,7 +139,7 @@ let buttonSpan = document.createElement('span');
 buttonSpan.classList.add('expandButton');
 articleContainer.appendChild(buttonSpan);
 buttonSpan.textContent = 'Click here!';
-buttonSpan.addEventListener('click', (event) => {
+buttonSpan.addEventListener("click", (event) => {
   articleContainer.classList.toggle('article-open');
 })
 

@@ -25,7 +25,6 @@ let menuItems = [
    // <div class="menu">
     let menuDiv = document.createElement('div');
     menuDiv.classList.add('menu');
-    menuDiv.classList.add('menu--open');
 
    //   <ul>
   let menuList = document.createElement('ul');
@@ -45,3 +44,6 @@ let menuItems = [
    // </div>
    return menuDiv;
 }
+
+const headDiv = document.querySelector('.header');
+headDiv.appendChild(menuComponentCreator(menuItems));
