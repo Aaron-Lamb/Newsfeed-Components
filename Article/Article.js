@@ -138,7 +138,9 @@ articleContainer.appendChild(thirdPar);
 let buttonSpan = document.createElement('span');
 buttonSpan.classList.add('expandButton');
 articleContainer.appendChild(buttonSpan);
-
+buttonSpan.addEventListener('click', (event) => {
+  articleContainer.classList.toggle('article-open');
+})
 
 return articleContainer;
 // </div> 
