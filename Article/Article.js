@@ -1,6 +1,6 @@
 /* This is the data we will be using to create our article components */
 /* Look over this data, then proceed to line 91*/
-const data = [
+let data = [
   {
     title: 'Lambda School Students: "We\'re the best!"',
     date: 'Nov 5th, 2018',
@@ -150,15 +150,17 @@ return articleContainer;
 
 const articlesContainer = document.querySelector('.articles');
 
-data.forEach((articleComp) => {
-  const articleComponent = articleComponentCreator(articleComp.title, articleComp.date, articleComp.firstParagraph, articleComp.secondParagraph, articleComp.thirdParagraph);
-  articlesContainer.appendChild(articleComponent);
-})
 
 data.push({
-  title: 'Just some literary ipsum.',
+  title: 'Just some literary ipsum',
   date: 'Feb 30th, 1883',
   firstParagraph: "I trust that I am not more dense than my neighbours, but I was always oppressed with a sense of my own stupidity in my dealings with Sherlock Holmes. Here I had heard what he had heard, I had seen what he had seen, and yet from his words it was evident that he saw clearly not only what had happened but what was about to happen, while to me the whole business was still confused and grotesque. As I drove home to my house in Kensington I thought over it all, from the extraordinary story of the red-headed copier of the \"Encyclopaedia\" down to the visit to Saxe-Coburg Square, and the ominous words with which he had parted from me. What was this nocturnal expedition, and why should I go armed? Where were we going, and what were we to do? I had the hint from Holmes that this smooth-faced pawnbroker's assistant was a formidable man--a man who might play a deep game. I tried to puzzle it out, but gave it up in despair and set the matter aside until night should bring an explanation.",
   secondParagraph: "It was a quarter-past nine when I started from home and made my way across the Park, and so through Oxford Street to Baker Street. Two hansoms were standing at the door, and as I entered the passage I heard the sound of voices from above. On entering his room I found Holmes in animated conversation with two men, one of whom I recognised as Peter Jones, the official police agent, while the other was a long, thin, sad-faced man, with a very shiny hat and oppressively respectable frock-coat.",
   thirdParagraph: "\"Ha! Our party is complete,\" said Holmes, buttoning up his pea-jacket and taking his heavy hunting crop from the rack. \"Watson, I think you know Mr. Jones, of Scotland Yard? Let me introduce you to Mr. Merryweather, who is to be our companion in to-night's adventure.\""
 })
+
+data.forEach((articleComp) => {
+  const articleComponent = articleComponentCreator(articleComp.title, articleComp.date, articleComp.firstParagraph, articleComp.secondParagraph, articleComp.thirdParagraph);
+  articlesContainer.appendChild(articleComponent);
+})
+console.log(data);
