@@ -25,6 +25,7 @@ let menuItems = [
    // <div class="menu">
     let menuDiv = document.createElement('div');
     menuDiv.classList.add('menu');
+    menuDiv.classList.add('menu--open');
 
    //   <ul>
   let menuList = document.createElement('ul');
@@ -36,8 +37,11 @@ let menuItems = [
     menuItem.textContent = element;
     menuDiv.appendChild(menuItem);
   });
-
    //   </ul>
+   let menuButton = document.querySelector('.menu-button');
+   menuButton.addEventListener('click', (event) => {
+     menuDiv.classList.toggle('menu--open');
+   })
    // </div>
    return menuDiv;
 }
