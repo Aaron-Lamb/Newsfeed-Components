@@ -90,25 +90,57 @@ const data = [
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
-  <div class="article">
-    <h2>{title of the article}</h2>
-    <p class="date">{date of the article}</p>
 
-    {three separate paragraph elements}
+Hint: You will need to use createElement more than once here!
 
-    <span class='expandButton'></span>
-  </div>
+Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
-  Hint: You will need to use createElement more than once here!
+Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
-  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
+Step 3: return the entire component.
 
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
 
-  Step 3: return the entire component.
-
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
-
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
+Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+const articleComponentCreator = (titleInfo, dateInfo, first, second, third) => {
+// <div class="article">
+let articleContainer = document.createElement('div');
+articleContainer.classList.add('article', 'article-open');
+
+//   <h2>{title of the article}</h2>
+let titleH2 = document.createElement('h2');
+titleH2.textContent = titleInfo;
+articleContainer.appendChild(titleH2);
+
+//   <p class="date">{date of the article}</p>
+let datePar = document.createElement('p');
+datePar.classList.add('date');
+datePar.textContent = dateInfo;
+articleContainer.appendChild(datePar);
+
+
+//   {three separate paragraph elements}
+let firstPar = document.createElement('p');
+firstPar.textContent = first;
+articleContainer.appendChild(firstPar);
+
+let secondPar = document.createElement('p');
+secondPar.textContent = second;
+articleContainer.appendChild(secondPar);
+
+let thirdPar = document.createElement('p');
+thirdPar.textContent = third;
+articleContainer.appendChild(thirdPar);
+
+//   <span class='expandButton'></span>
+let buttonSpan = document.createElement('span');
+buttonSpan.classList.add('expandButton');
+articleContainer.appendChild(buttonSpan);
+
+
+return articleContainer;
+// </div> 
+
+} 
