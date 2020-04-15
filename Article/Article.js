@@ -1,6 +1,6 @@
 /* This is the data we will be using to create our article components */
 /* Look over this data, then proceed to line 91*/
-const data = [
+let data = [
   {
     title: 'Lambda School Students: "We\'re the best!"',
     date: 'Nov 5th, 2018',
@@ -90,25 +90,86 @@ const data = [
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
-  <div class="article">
-    <h2>{title of the article}</h2>
-    <p class="date">{date of the article}</p>
 
-    {three separate paragraph elements}
+Hint: You will need to use createElement more than once here!
 
-    <span class='expandButton'></span>
-  </div>
+Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
-  Hint: You will need to use createElement more than once here!
+Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
-  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
+Step 3: return the entire component.
 
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
 
-  Step 3: return the entire component.
-
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
-
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
+Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+const articleComponentCreator = (titleInfo, dateInfo, first, second, third) => {
+// <div class="article">
+let articleContainer = document.createElement('div');
+articleContainer.classList.add('article');
+
+//   <h2>{title of the article}</h2>
+let titleH2 = document.createElement('h2');
+titleH2.textContent = titleInfo;
+articleContainer.appendChild(titleH2);
+
+//   <p class="date">{date of the article}</p>
+let datePar = document.createElement('p');
+datePar.classList.add('date');
+datePar.textContent = dateInfo;
+articleContainer.appendChild(datePar);
+
+
+//   {three separate paragraph elements}
+let firstPar = document.createElement('p');
+firstPar.textContent = first;
+articleContainer.appendChild(firstPar);
+
+let secondPar = document.createElement('p');
+secondPar.textContent = second;
+articleContainer.appendChild(secondPar);
+
+let thirdPar = document.createElement('p');
+thirdPar.textContent = third;
+articleContainer.appendChild(thirdPar);
+
+//   <span class='expandButton'></span>
+let buttonSpan = document.createElement('span');
+buttonSpan.classList.add('expandButton');
+articleContainer.appendChild(buttonSpan);
+buttonSpan.textContent = 'Click here!';
+buttonSpan.addEventListener("click", (event) => {
+  articleContainer.classList.toggle('article-open');
+})
+
+let readButton = document.createElement('span');
+readButton.textContent = 'Read\?';
+readButton.classList.add('close');
+articleContainer.appendChild(readButton);
+readButton.addEventListener('click', (event) => {
+  articleContainer.style.display = "none";
+})
+console.log(readButton);
+
+return articleContainer;
+// </div> 
+
+} 
+
+const articlesContainer = document.querySelector('.articles');
+
+
+data.push({
+  title: 'Just some literary ipsum',
+  date: 'Feb 30th, 1883',
+  firstParagraph: "I trust that I am not more dense than my neighbours, but I was always oppressed with a sense of my own stupidity in my dealings with Sherlock Holmes. Here I had heard what he had heard, I had seen what he had seen, and yet from his words it was evident that he saw clearly not only what had happened but what was about to happen, while to me the whole business was still confused and grotesque. As I drove home to my house in Kensington I thought over it all, from the extraordinary story of the red-headed copier of the \"Encyclopaedia\" down to the visit to Saxe-Coburg Square, and the ominous words with which he had parted from me. What was this nocturnal expedition, and why should I go armed? Where were we going, and what were we to do? I had the hint from Holmes that this smooth-faced pawnbroker's assistant was a formidable man--a man who might play a deep game. I tried to puzzle it out, but gave it up in despair and set the matter aside until night should bring an explanation.",
+  secondParagraph: "It was a quarter-past nine when I started from home and made my way across the Park, and so through Oxford Street to Baker Street. Two hansoms were standing at the door, and as I entered the passage I heard the sound of voices from above. On entering his room I found Holmes in animated conversation with two men, one of whom I recognised as Peter Jones, the official police agent, while the other was a long, thin, sad-faced man, with a very shiny hat and oppressively respectable frock-coat.",
+  thirdParagraph: "\"Ha! Our party is complete,\" said Holmes, buttoning up his pea-jacket and taking his heavy hunting crop from the rack. \"Watson, I think you know Mr. Jones, of Scotland Yard? Let me introduce you to Mr. Merryweather, who is to be our companion in to-night's adventure.\""
+})
+
+data.forEach((articleComp) => {
+  const articleComponent = articleComponentCreator(articleComp.title, articleComp.date, articleComp.firstParagraph, articleComp.secondParagraph, articleComp.thirdParagraph);
+  articlesContainer.appendChild(articleComponent);
+})
+console.log(data);
