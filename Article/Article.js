@@ -143,6 +143,15 @@ buttonSpan.addEventListener("click", (event) => {
   articleContainer.classList.toggle('article-open');
 })
 
+let readButton = document.createElement('span');
+readButton.textContent = 'Read\?';
+readButton.classList.add('close');
+articleContainer.appendChild(readButton);
+readButton.addEventListener('click', (event) => {
+  articleContainer.style.display = "none";
+})
+console.log(readButton);
+
 return articleContainer;
 // </div> 
 
